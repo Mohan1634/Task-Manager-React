@@ -9,20 +9,20 @@ import { useContext, useEffect } from "react";
 import axios from "axios";
 import { Context,server } from "./main";
 function App() {
-  const {user,setUser,setIsAuthenticated,setIsLoading}=useContext(Context);
+  const {user,setUser,setIsAuthenticated,isLoading,setLoading}=useContext(Context);
   useEffect(()=>{
-     setIsLoading(true);
+     setLoading(true);
 
      axios.get(`${server}/users/me`,{
       withCredentials:true,
-     }).then((res)=>{
+     }).then((res)=>{ 
       setUser(res.data.user);
       setIsAuthenticated(true);
-      setIsLoading(false);
+      setLoading(false);
      }).catch((error)=>{
       setUser({});
       setIsAuthenticated(false);
-      setIsLoading(false);
+      setLoading(false);
      })
   },[])
 

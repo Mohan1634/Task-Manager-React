@@ -8,11 +8,11 @@ import {server} from "../main";
 export const Login = () => {
   const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
-  const {isAuthenticated,setIsAuthenticated,isloading,setIsLoading}=useContext(Context);
+  const {isAuthenticated,setIsAuthenticated,isLoading,setLoading}=useContext(Context);
 
   const submitHandler=async (e)=>{
     e.preventDefault();
-    setIsLoading(true);
+    setLoading(true);
 
     try {
       const {data}=await axios.post(`${server}/users/login`,{
@@ -25,11 +25,11 @@ export const Login = () => {
     })
       toast.success(data.message);
       setIsAuthenticated(true);
-      setIsLoading(false);
+      setLoading(false);
       } catch (error) {
         toast.error(error.response.data.message);
         setIsAuthenticated(false);
-        setIsLoading(false);
+        setLoading(false);
 
       }
   }
@@ -60,7 +60,7 @@ export const Login = () => {
             className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
 
-          <button disabled={isloading}
+          <button disabled={isLoading}
             type="submit"
             className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-200"
           >

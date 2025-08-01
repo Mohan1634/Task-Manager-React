@@ -11,14 +11,14 @@ export const Context=createContext({isAuthenticated: false});
 
 const AppWrapper=(props)=>{
   const [isAuthenticated,setIsAuthenticated]=useState(false);
-  const [isloading,setIsLoading]=useState(false);
+  const [isLoading,setLoading]=useState(false);
   const [user,setUser]=useState({});
 
 
-  return <Context.Provider value={{
-    isAuthenticated,setIsAuthenticated,isloading,setIsLoading,user,setUser}}>
+  return (<Context.Provider value={{
+    isAuthenticated,setIsAuthenticated,isLoading,setLoading,user,setUser}}>
     <App/>
-  </Context.Provider>
+  </Context.Provider>)
 }
 
 

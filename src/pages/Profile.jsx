@@ -6,10 +6,11 @@ import { Navigate } from 'react-router-dom';
 export const Profile = () => {
   const { isAuthenticated, isLoading, user } = useContext(Context);
   if(!isAuthenticated) return <Navigate to={"/login"}/>
-  if (isLoading || !user?.name || !user?.email) return <Loader />;
-
-  return (
-
+ 
+  console.log(isLoading);
+  return isLoading ?(
+    <Loader/>
+  ) :(
 
     <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
       <div className="bg-white shadow-xl rounded-3xl p-8 w-full max-w-lg">

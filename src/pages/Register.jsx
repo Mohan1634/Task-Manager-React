@@ -8,11 +8,11 @@ export const Register = () => {
    const [name,setName]=useState("");
    const [email,setEmail]=useState("");
    const [password,setPassword]=useState("");
-   const {isAuthenticated,setIsAuthenticated,isloading,setIsLoading}=useContext(Context);
+   const {isAuthenticated,setIsAuthenticated,isLoading,setLoading}=useContext(Context);
    
 
   const submitHandler=async (e)=>{
-    setIsLoading(true);
+    setLoading(true);
     //any button clicked will refresh remove that behaviour
      e.preventDefault();
      console.log(name,email,password);
@@ -33,13 +33,13 @@ export const Register = () => {
 
      toast.success(data.message);
      setIsAuthenticated(true);
-     setIsLoading(false);
+     setLoading(false);
      
      } catch (error) {
       toast.error(error.response.data.message);
       console.log(error);
       setIsAuthenticated(false);
-      setIsLoading(false);
+      setLoading(false);
      }
   }
   if(isAuthenticated) return <Navigate to={"/"}/>
@@ -74,7 +74,7 @@ export const Register = () => {
             className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
 
-          <button disabled={isloading}
+          <button disabled={isLoading}
             type="submit"
             className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-200"
           >

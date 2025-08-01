@@ -7,11 +7,11 @@ import toast from "react-hot-toast";
 
 export const Header = () => {
 
-  const {isAuthenticated,setIsAuthenticated,isloading,setIsLoading}=useContext(Context);
+  const {isAuthenticated,setIsAuthenticated,isLoading,setLoading}=useContext(Context);
   //As there is no form,just a button there is no need of
   //preventDefault
   const logoutHandler=async()=>{
-      setIsLoading(true);
+      setLoading(true);
 
         //as it is get request no data object and 
         // no headers=>just tell the type of data you are sending 
@@ -22,11 +22,11 @@ export const Header = () => {
         })
         setIsAuthenticated(false);
         toast.success("Logged Out Succesfully");
-        setIsLoading(false);
+        setLoading(false);
     } catch (error) {
        setIsAuthenticated(true);
        toast.success(error.response.data.message);
-       setIsLoading(false);
+       setLoading(false);
     }
   }
 
@@ -49,7 +49,7 @@ export const Header = () => {
           Profile
         </Link>
         {
-          isAuthenticated ?  <button onClick={logoutHandler} disabled={isloading}
+          isAuthenticated ?  <button onClick={logoutHandler} disabled={isLoading}
                              className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition duration-200 font-medium"
                                              >
                               Logout
