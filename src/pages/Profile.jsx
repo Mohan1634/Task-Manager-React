@@ -10,7 +10,7 @@ export const Profile = () => {
 
   return (
 
-    isLoading ? <Loader /> :(
+
     <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
       <div className="bg-white shadow-xl rounded-3xl p-8 w-full max-w-lg">
         <div className="flex flex-col items-center text-center">
@@ -37,5 +37,4 @@ export const Profile = () => {
       </div>
     </div>
     )
-  );
 };
