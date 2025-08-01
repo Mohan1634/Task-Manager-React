@@ -6,7 +6,7 @@ import { Navigate } from 'react-router-dom';
 export const Profile = () => {
   const { isAuthenticated, isLoading, user } = useContext(Context);
   if(!isAuthenticated) return <Navigate to={"/login"}/>
-  if (isLoading) return <Loader />;
+  if (isLoading || !user?.name || !user?.email) return <Loader />;
 
   return (
 
